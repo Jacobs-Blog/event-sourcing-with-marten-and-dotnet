@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.2"/>
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>9f72fcad-bd7a-425f-8dfc-19147ad47bfd</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="13.1.0" />
+        <PackageReference Include="Aspire.Hosting.Keycloak" Version="13.1.0-preview.1.25616.3" />
+        <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.1.0" />
+        <PackageReference Include="Aspire.Npgsql" Version="13.1.0" />
+        <PackageReference Include="Scalar.Aspire" Version="0.8.12" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BIMEvents.Api\BIMEvents.Api.csproj" />
+    </ItemGroup>
+
+</Project>

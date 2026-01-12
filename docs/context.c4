@@ -1,0 +1,100 @@
+specification {
+    element system
+    element component
+
+    element bimuser01 {
+        style {
+            shape person
+            color green
+        }
+    }
+
+    element bimuser02 {
+        style {
+            shape person
+            color amber
+        }
+    }
+
+    element auditor {
+        style {
+            shape person
+            color gray
+        }
+    }
+}
+
+model {
+    bimuser01 = bimuser01 'BIM User 01' {
+        description 'A user of our BIM application.'
+    }
+
+    bimuser02 = bimuser02 'BIM User 02' {
+        description 'A user of our BIM application.'
+    }
+
+    auditor = auditor 'Auditor' {
+        description 'An external auditor, reviewing the plan, and changed made. Investigates issues after an accident.'
+    }
+
+    saas = system 'BIM Events' {
+
+        description 'The BIMEvents (Building Information Modeling) Platform is a SaaS solution that provides building models, project collaboration, and construction management tools for architects, engineers, and construction professionals.'
+
+        component keycloak 'KeyCloak Identity and Access Management (IAM)' {
+            style {
+                icon bootstrap:key
+                shape rectangle
+            }
+
+            description 'Keycloak is an open-source identity and access management solution. It provides authentication and authorization services for the BIMEvents Api, managing user identities, roles, and permissions.'
+        }
+
+        component api 'BIMEvents Api' {
+            style {
+                icon tech:dotnet
+                shape rectangle
+            }
+
+            description 'Handles all business logic for the BIMEvents platform. Exposes RESTful endpoints for creating plans and updating roof specifications.'
+        }
+
+        component database 'PostgreSQL Database' {
+            style {
+                icon tech:postgresql
+                shape rectangle
+            }
+
+            description 'Marten is using PostgreSQL as document and event store.'
+        }
+
+        bimuser01 -> keycloak 'Authenticates and authorizes via'
+        bimuser02 -> keycloak 'Authenticates and authorizes via'
+        auditor -> keycloak 'Authenticates and authorizes via'
+
+        bimuser01 -> api 'Creates and manages building models via'
+        bimuser02 -> api 'Creates and manages building models via'
+        auditor -> api 'Reviews building models and changes via'
+
+        api -> keycloak 'Validates tokens with'
+        api -> database 'Reads from and writes to'
+    }
+}
+
+views {
+    view index {
+        title 'BIM Events System - Context Diagram'
+        include *
+    }
+
+    view saas {
+        title 'BIM Events System - Component Diagram'
+        include bimuser01
+        include bimuser02
+        include auditor
+        include saas
+        include keycloak
+        include api
+        include database    
+    }
+}

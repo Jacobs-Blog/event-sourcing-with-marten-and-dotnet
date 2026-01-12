@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMEvents.Domain", "src\BIMEvents.Domain\BIMEvents.Domain.csproj", "{CAAACC1E-6D63-4B4F-AB00-5C8DE63E2143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMEvents.Api", "src\BIMEvents.Api\BIMEvents.Api.csproj", "{FA951B1E-AF8D-4006-BED1-2CACF9CF43AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMEvents.Infrastructure", "src\BIMEvents.Infrastructure\BIMEvents.Infrastructure.csproj", "{FE78F63F-C13F-4829-9D32-E4FF0F2F1CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMEvents.Application", "src\BIMEvents.Application\BIMEvents.Application.csproj", "{A90AADEB-9094-4075-B6B2-F26969DB380B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMEvents.AppHost", "src\BIMEvents.AppHost\BIMEvents.AppHost.csproj", "{2FF05CC8-4238-41F5-A220-A1DC978B1AFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIMEvents.ServiceDefaults", "src\BIMEvents.ServiceDefaults\BIMEvents.ServiceDefaults.csproj", "{04B5BD04-E64C-4269-8203-8333DE0F8036}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4C79B01-1BA6-461C-B9D3-3A9428B2A29E}"
+	ProjectSection(SolutionItems) = preProject
+		calls.http = calls.http
+		keycloak\bimevents-realm.json = keycloak\bimevents-realm.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAAACC1E-6D63-4B4F-AB00-5C8DE63E2143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAACC1E-6D63-4B4F-AB00-5C8DE63E2143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAACC1E-6D63-4B4F-AB00-5C8DE63E2143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAACC1E-6D63-4B4F-AB00-5C8DE63E2143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA951B1E-AF8D-4006-BED1-2CACF9CF43AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA951B1E-AF8D-4006-BED1-2CACF9CF43AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA951B1E-AF8D-4006-BED1-2CACF9CF43AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA951B1E-AF8D-4006-BED1-2CACF9CF43AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE78F63F-C13F-4829-9D32-E4FF0F2F1CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE78F63F-C13F-4829-9D32-E4FF0F2F1CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE78F63F-C13F-4829-9D32-E4FF0F2F1CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE78F63F-C13F-4829-9D32-E4FF0F2F1CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90AADEB-9094-4075-B6B2-F26969DB380B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90AADEB-9094-4075-B6B2-F26969DB380B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90AADEB-9094-4075-B6B2-F26969DB380B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90AADEB-9094-4075-B6B2-F26969DB380B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FF05CC8-4238-41F5-A220-A1DC978B1AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FF05CC8-4238-41F5-A220-A1DC978B1AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FF05CC8-4238-41F5-A220-A1DC978B1AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FF05CC8-4238-41F5-A220-A1DC978B1AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B5BD04-E64C-4269-8203-8333DE0F8036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B5BD04-E64C-4269-8203-8333DE0F8036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B5BD04-E64C-4269-8203-8333DE0F8036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B5BD04-E64C-4269-8203-8333DE0F8036}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

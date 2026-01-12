@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.AspNetCore.OpenApi.Generated</InterceptorsNamespaces>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspire.Keycloak.Authentication" Version="13.1.0-preview.1.25616.3" />
+      <PackageReference Include="Aspire.Npgsql" Version="13.1.0" />
+      <PackageReference Include="Marten" Version="8.17.0" />
+      <PackageReference Include="Scalar.AspNetCore.Microsoft" Version="2.12.3" />
+      <PackageReference Include="WolverineFx" Version="5.9.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BIMEvents.Application\BIMEvents.Application.csproj" />
+      <ProjectReference Include="..\BIMEvents.Infrastructure\BIMEvents.Infrastructure.csproj" />
+      <ProjectReference Include="..\BIMEvents.ServiceDefaults\BIMEvents.ServiceDefaults.csproj" />
+    </ItemGroup>
+
+</Project>
