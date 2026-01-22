@@ -64,3 +64,11 @@ Authorization: Bearer {{access_token}}
 ### Get Plan Activity
 GET http://localhost:5111/plan/activity/{{planId}}
 Authorization: Bearer {{access_token}}
+
+### Get All Plans
+GET http://localhost:5111/plan/all
+Authorization: Bearer {{access_token}}
+
+### Get Plan Activity for specific plan
+GET http://localhost:5111/plan/activity/97be51f4-b5fd-4af7-b596-d8878f68baed
+Authorization: Bearer {{access_token}}

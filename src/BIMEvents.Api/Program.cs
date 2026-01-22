@@ -1,5 +1,6 @@
 using BIMEvents.Api;
 using BIMEvents.Application;
+using BIMEvents.Infrastructure;
 using JasperFx;
 using JasperFx.Events.Daemon;
 using JasperFx.Events.Projections;
@@ -48,11 +49,19 @@ builder.Services.AddMarten(options =>
         options.Projections.Add<PlanProjection>(ProjectionLifecycle.Inline); 
     }).AddAsyncDaemon(DaemonMode.Solo)
     .UseNpgsqlDataSource();
+builder.Services.AddScoped<HistoricDataSeeder>();
 
 var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapOpenApi();
 app.MapPlanEndpoints();
+
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+    var seeder = scope.ServiceProvider.GetRequiredService<HistoricDataSeeder>();
+    await seeder.SeedAsync(app.Lifetime.ApplicationStopping);
+}
 
 return await app.RunJasperFxCommands(args);
