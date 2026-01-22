@@ -50,9 +50,13 @@
           "value": "keycloak"
         }
       ],
-      "realmRoles": ["admin"],
+      "realmRoles": [
+        "admin"
+      ],
       "clientRoles": {
-        "realm-management": ["realm-admin"]
+        "realm-management": [
+          "realm-admin"
+        ]
       }
     },
     {
@@ -254,6 +258,21 @@
           }
         },
         {
+          "id": "5737A2B5-BE6B-4386-B974-6B9D5D5942C9",
+          "name": "userid",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-property-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "id",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "claim.name": "userid",
+            "jsonType.label": "String"
+          }
+        },
+        {
           "id": "83522432-9551-4014-9c77-361c4f4315f2",
           "name": "email",
           "protocol": "openid-connect",
@@ -299,7 +318,8 @@
       "defaultClientScopes": [
         "role_list",
         "profile",
-        "email"
+        "email",
+        "userid"
       ],
       "optionalClientScopes": [
         "address",

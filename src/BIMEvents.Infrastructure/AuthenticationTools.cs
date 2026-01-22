@@ -11,7 +11,7 @@ public static class AuthenticationTools
         if (!httpContextAccessor.HttpContext!.User.Identity!.IsAuthenticated)
             throw new UnauthorizedAccessException();
 
-        var id = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirst("id")!.Value);
+        var id = Guid.Parse(httpContextAccessor.HttpContext.User.FindFirst("userid")!.Value);
         var name = httpContextAccessor.HttpContext.User.FindFirst("name")!.Value;
         var username = httpContextAccessor.HttpContext.User.FindFirst("preferred_username")!.Value;
         var email = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email)!.Value;

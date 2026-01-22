@@ -2,7 +2,7 @@
 POST http://localhost:8080/realms/bimevents/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=password&username=bimuser01&password=bimuser01!&client_id=example-client&scope=openid profile email
+grant_type=password&username=bimuser01&password=bimuser01!&client_id=example-client&scope=openid profile email 
 
 > {%
     client.global.set("access_token", response.body.access_token);

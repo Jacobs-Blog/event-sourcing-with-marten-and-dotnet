@@ -33,7 +33,7 @@ builder.Services
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddOpenApi(options => options.AddScalarTransformers());
-// builder.AddNpgsqlDataSource("marten");
+builder.AddNpgsqlDataSource("marten");
 builder.Logging.AddOpenTelemetry(logging =>
 {
     logging.IncludeFormattedMessage = true;
@@ -42,11 +42,9 @@ builder.Logging.AddOpenTelemetry(logging =>
 builder.Host.UseWolverine(options => options.ApplicationAssembly = typeof(CreatePlan).Assembly);
 builder.Services.AddMarten(options =>
     {
-        options.Connection(builder.Configuration.GetConnectionString("marten")!);
-        // options.DatabaseSchemaName = "cli";
         options.OpenTelemetry.TrackConnections = TrackLevel.Normal;
         options.OpenTelemetry.TrackEventCounters();
-        options.AutoCreateSchemaObjects = AutoCreate.All; //.All will wipe out the schema each time this is run
+        options.AutoCreateSchemaObjects = AutoCreate.All; 
         options.Projections.Add<PlanProjection>(ProjectionLifecycle.Inline); 
         options.Projections.Add<UserActivityProjectionBuilder>(ProjectionLifecycle.Inline);
     })
