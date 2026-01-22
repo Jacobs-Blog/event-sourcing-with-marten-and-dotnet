@@ -38,6 +38,25 @@
   "failureFactor": 30,
   "users": [
     {
+      "username": "admin",
+      "firstName": "Admin",
+      "lastName": "User",
+      "email": "admin@example.com",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "keycloak"
+        }
+      ],
+      "realmRoles": ["admin"],
+      "clientRoles": {
+        "realm-management": ["realm-admin"]
+      }
+    },
+    {
+      "id": "e173e3ed-416c-4e88-82b2-e06b6ce841e7",
       "username": "bimuser01",
       "firstName": "John",
       "lastName": "Doe",
@@ -57,6 +76,7 @@
       }
     },
     {
+      "id": "35E2F117-B066-4C27-8F0E-03A2CFB620FD",
       "username": "bimuser02",
       "firstName": "Jane",
       "lastName": "Doe",
@@ -67,6 +87,46 @@
         {
           "type": "password",
           "value": "bimuser02!"
+        }
+      ],
+      "clientRoles": {
+        "account": [
+          "manage-account"
+        ]
+      }
+    },
+    {
+      "id": "7D4C8A2C-1F1E-4D1C-8F2A-8F5E3C6D9A1B",
+      "username": "bimuser03",
+      "firstName": "Josh",
+      "lastName": "Hunter",
+      "email": "bimuser03@example.com",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "bimuser03!"
+        }
+      ],
+      "clientRoles": {
+        "account": [
+          "manage-account"
+        ]
+      }
+    },
+    {
+      "id": "A1B2C3D4-E5F6-4789-ABCD-1234567890AB",
+      "username": "bimuser04",
+      "firstName": "Lara",
+      "lastName": "Bollinger",
+      "email": "bimuser04@example.com",
+      "emailVerified": true,
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "bimuser04!"
         }
       ],
       "clientRoles": {

@@ -26,14 +26,14 @@ builder.Services
                 ValidateAudience = false,
                 ValidIssuer = "http://localhost:8080/realms/bimevents"
             };
-            
+
             if (builder.Environment.IsDevelopment())
                 options.RequireHttpsMetadata = false;
         });
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddOpenApi(options => options.AddScalarTransformers());
-builder.AddNpgsqlDataSource("marten");
+// builder.AddNpgsqlDataSource("marten");
 builder.Logging.AddOpenTelemetry(logging =>
 {
     logging.IncludeFormattedMessage = true;
@@ -42,12 +42,15 @@ builder.Logging.AddOpenTelemetry(logging =>
 builder.Host.UseWolverine(options => options.ApplicationAssembly = typeof(CreatePlan).Assembly);
 builder.Services.AddMarten(options =>
     {
-        options.DatabaseSchemaName = "cli";
+        options.Connection(builder.Configuration.GetConnectionString("marten")!);
+        // options.DatabaseSchemaName = "cli";
         options.OpenTelemetry.TrackConnections = TrackLevel.Normal;
         options.OpenTelemetry.TrackEventCounters();
         options.AutoCreateSchemaObjects = AutoCreate.All; //.All will wipe out the schema each time this is run
         options.Projections.Add<PlanProjection>(ProjectionLifecycle.Inline); 
-    }).AddAsyncDaemon(DaemonMode.Solo)
+        options.Projections.Add<UserActivityProjectionBuilder>(ProjectionLifecycle.Inline);
+    })
+    .AddAsyncDaemon(DaemonMode.Solo)
     .UseNpgsqlDataSource();
 builder.Services.AddScoped<HistoricDataSeeder>();
 
@@ -56,6 +59,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapOpenApi();
 app.MapPlanEndpoints();
+app.MapUserEndpoints();
 
 if (app.Environment.IsDevelopment())
 {

@@ -12,8 +12,7 @@ public static class PlanEndpointsExtension
         public IEndpointRouteBuilder MapPlanEndpoints()
         {
             var planRoute = endpoints
-                .MapGroup("/plan")
-                .RequireAuthorization();
+                .MapGroup("/plan");
 
             planRoute
                 .MapGet("/{id:guid}", async (Guid id, IMessageBus bus) =>
@@ -43,17 +42,22 @@ public static class PlanEndpointsExtension
                     var createPlan = body.CreatePlan(contextAccessor.GetAccount());
                     var plan = await bus.InvokeAsync<PlanCreated>(createPlan);
                     return Results.Created($"/plan/{plan.PlanId}", plan);
-                }).WithName("CreatePlan");
+                })
+                .WithName("CreatePlan")
+                .RequireAuthorization();
 
             planRoute
-                .MapPost("/updateroofspecification", async (UpdateRoofSpecificationDto body, IHttpContextAccessor contextAccessor, IMessageBus bus) =>
+                .MapPost("/updateroofspecification", async (UpdateRoofSpecificationDto body,
+                    IHttpContextAccessor contextAccessor, IMessageBus bus) =>
                 {
                     var updateRoofSpecification = body.CreateUpdateRoofSpecification(contextAccessor.GetAccount());
                     await bus.InvokeAsync(updateRoofSpecification);
-                    
+
                     var plan = await bus.InvokeAsync<Plan?>(new GetPlanById(body.PlanId));
                     return plan is not null ? Results.Accepted($"/plan/{plan.Id}", plan) : Results.NotFound();
-                }).WithName("UpdateRoofSpecification");
+                })
+                .WithName("UpdateRoofSpecification")
+                .RequireAuthorization();
 
             return planRoute;
         }

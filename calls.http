@@ -59,16 +59,18 @@ Content-Type: application/json
 
 ### Get Plan
 GET http://localhost:5111/plan/{{planId}}
-Authorization: Bearer {{access_token}}
 
 ### Get Plan Activity
 GET http://localhost:5111/plan/activity/{{planId}}
-Authorization: Bearer {{access_token}}
 
 ### Get All Plans
 GET http://localhost:5111/plan/all
-Authorization: Bearer {{access_token}}
 
 ### Get Plan Activity for specific plan
 GET http://localhost:5111/plan/activity/97be51f4-b5fd-4af7-b596-d8878f68baed
-Authorization: Bearer {{access_token}}
+
+### Get All User Activities
+GET http://localhost:5111/useractivity
+
+### Get Specific User Activity
+GET http://localhost:5111/useractivity/e173e3ed-416c-4e88-82b2-e06b6ce841e7
