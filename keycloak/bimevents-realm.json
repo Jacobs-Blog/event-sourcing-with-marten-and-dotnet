@@ -318,8 +318,7 @@
       "defaultClientScopes": [
         "role_list",
         "profile",
-        "email",
-        "userid"
+        "email"
       ],
       "optionalClientScopes": [
         "address",
