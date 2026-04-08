@@ -18,7 +18,8 @@ public static class UserActivityEndpointsExtension
                     var activity = await bus.InvokeAsync<IReadOnlyList<UserActivityProjection>?>(new GetAllUserActivity(), cancellationToken);
                     return activity is not null ? Results.Ok(activity) : Results.NotFound();
                 })
-                .WithName("AllUserActivity");
+                .WithName("AllUserActivity")
+                .WithDescription("Get all user activity");
             
             useractivityRoute
                 .MapGet("/{userId}", async (Guid userId, IMessageBus bus, CancellationToken cancellationToken) =>
@@ -26,7 +27,8 @@ public static class UserActivityEndpointsExtension
                     var activity = await bus.InvokeAsync<UserActivityProjection?>(new GetUserActivity(userId), cancellationToken);
                     return activity is not null ? Results.Ok(activity) : Results.NotFound();
                 })
-                .WithName("UserActivityByUser");
+                .WithName("UserActivityByUser")
+                .WithDescription("Get user activity by user id");
             
             return useractivityRoute;
         }

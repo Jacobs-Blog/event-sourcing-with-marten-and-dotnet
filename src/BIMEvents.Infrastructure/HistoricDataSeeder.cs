@@ -6,6 +6,27 @@ namespace BIMEvents.Infrastructure;
 
 public class HistoricDataSeeder(IDocumentStore store)
 {
+    private static readonly string[] BuildingTypes = 
+    {
+        "Tower", "Plaza", "Center", "Heights", "Square", "Garden", "Park",
+        "Court", "Hall", "House", "Ridge", "Point", "Terrace", "View",
+        "Pinnacle", "Summit", "Landmark", "Building", "Complex", "Quarter"
+    };
+
+    private string GenerateBuildingName(Faker faker)
+    {
+        var buildingType = faker.PickRandom(BuildingTypes);
+        var name = faker.Company.CompanyName();
+        var number = faker.Random.Int(100, 9999);
+        
+        return faker.Random.Int(0, 2) switch
+        {
+            0 => $"{name} {buildingType}",
+            1 => $"{buildingType} {number}",
+            _ => $"{faker.Address.City()} {buildingType}"
+        };
+    }
+
     public async Task SeedAsync(CancellationToken cancellationToken)
     {
         Faker faker = new();
@@ -48,7 +69,7 @@ public class HistoricDataSeeder(IDocumentStore store)
                 {
                     CreatedAt = planCreatedAt,
                     PlanId = Guid.NewGuid(),
-                    PlanName = faker.Commerce.ProductName(),
+                    PlanName = GenerateBuildingName(faker),
                     MetaData = new MetaData(
                         Guid.Parse(user.Id),
                         $"{user.FirstName} {user.LastName}",

@@ -27,8 +27,7 @@ builder.Services
                 ValidIssuer = "http://localhost:8080/realms/bimevents"
             };
 
-            if (builder.Environment.IsDevelopment())
-                options.RequireHttpsMetadata = false;
+            options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
         });
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();

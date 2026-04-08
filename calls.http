@@ -67,10 +67,10 @@ GET http://localhost:5111/plan/activity/{{planId}}
 GET http://localhost:5111/plan/all
 
 ### Get Plan Activity for specific plan
-GET http://localhost:5111/plan/activity/97be51f4-b5fd-4af7-b596-d8878f68baed
+GET http://localhost:5111/plan/activity/{{planId}}
 
 ### Get All User Activities
 GET http://localhost:5111/useractivity
 
 ### Get Specific User Activity
-GET http://localhost:5111/useractivity/e173e3ed-416c-4e88-82b2-e06b6ce841e7
+GET http://localhost:5111/useractivity/{{planId}}

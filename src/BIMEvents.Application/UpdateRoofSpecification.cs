@@ -10,7 +10,9 @@ public class UpdateRoofSpecificationHandler(IDocumentStore store)
     public async Task Handle(UpdateRoofSpecification command, CancellationToken cancellationToken)
     {
         await using var session = store.LightweightSession();
-        var roofSpecificationAdded = new RoofSpecificationChanged(command.PlanId, command.RoofSpecification, command.MetaData, DateTimeOffset.UtcNow);
+        var roofSpecificationAdded = new RoofSpecificationChanged(command.PlanId, command.RoofSpecification,
+            command.MetaData, DateTimeOffset.UtcNow);
+        
         session.Events.Append(command.PlanId, roofSpecificationAdded);
         await session.SaveChangesAsync(cancellationToken);
     }
