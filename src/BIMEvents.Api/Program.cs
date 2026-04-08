@@ -44,7 +44,7 @@ builder.Services.AddMarten(options =>
         options.OpenTelemetry.TrackConnections = TrackLevel.Normal;
         options.OpenTelemetry.TrackEventCounters();
         options.AutoCreateSchemaObjects = AutoCreate.All; 
-        options.Projections.Add<PlanProjection>(ProjectionLifecycle.Inline); 
+        options.Projections.Add<PlanProjection>(ProjectionLifecycle.Async); 
         options.Projections.Add<UserActivityProjectionBuilder>(ProjectionLifecycle.Inline);
     })
     .AddAsyncDaemon(DaemonMode.Solo)

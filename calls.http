@@ -52,7 +52,7 @@ Content-Type: application/json
 {
   "planId": "{{planId}}",
   "roofSpecification": {
-    "snowLoadKiloNewtonPerM2": 1.2,
+    "snowLoadKiloNewtonPerM2": 1.8,
     "windUpliftKiloNewtonPerM2": 1.5
   }
 }
