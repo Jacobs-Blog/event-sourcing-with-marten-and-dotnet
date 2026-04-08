@@ -9,10 +9,10 @@
 
     <ItemGroup>
       <PackageReference Include="Aspire.Keycloak.Authentication" Version="13.1.0-preview.1.25616.3" />
-      <PackageReference Include="Aspire.Npgsql" Version="13.1.0" />
-      <PackageReference Include="Marten" Version="8.17.0" />
-      <PackageReference Include="Scalar.AspNetCore.Microsoft" Version="2.12.3" />
-      <PackageReference Include="WolverineFx" Version="5.9.2" />
+      <PackageReference Include="Aspire.Npgsql" Version="13.2.1" />
+      <PackageReference Include="Marten" Version="8.29.2" />
+      <PackageReference Include="Scalar.AspNetCore.Microsoft" Version="2.13.20" />
+      <PackageReference Include="WolverineFx" Version="5.28.0" />
     </ItemGroup>
 
     <ItemGroup>

@@ -2,7 +2,7 @@
 POST http://localhost:8080/realms/bimevents/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=password&username=bimuser01&password=bimuser01!&client_id=example-client&scope=openid profile email
+grant_type=password&username=bimuser01&password=bimuser01!&client_id=example-client&scope=openid profile email 
 
 > {%
     client.global.set("access_token", response.body.access_token);
@@ -52,15 +52,25 @@ Content-Type: application/json
 {
   "planId": "{{planId}}",
   "roofSpecification": {
-    "snowLoadKiloNewtonPerM2": 1.2,
+    "snowLoadKiloNewtonPerM2": 1.8,
     "windUpliftKiloNewtonPerM2": 1.5
   }
 }
 
 ### Get Plan
 GET http://localhost:5111/plan/{{planId}}
-Authorization: Bearer {{access_token}}
 
 ### Get Plan Activity
 GET http://localhost:5111/plan/activity/{{planId}}
-Authorization: Bearer {{access_token}}
+
+### Get All Plans
+GET http://localhost:5111/plan/all
+
+### Get Plan Activity for specific plan
+GET http://localhost:5111/plan/activity/{{planId}}
+
+### Get All User Activities
+GET http://localhost:5111/useractivity
+
+### Get Specific User Activity
+GET http://localhost:5111/useractivity/{{planId}}

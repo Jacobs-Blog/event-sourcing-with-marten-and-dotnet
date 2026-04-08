@@ -39,6 +39,16 @@ A good flow for testing:
 6. Get the plan (should have the latest specification)
 7. Get the plan activity (should show all changes made to the plan)
 
+## Added flow: historic data seeding
+
+To show a more time-based event sourcing example, a data seeding flow has been added. This flow creates a plan and makes multiple changes to it, each with a different timestamp in the past. This allows you to see how the plan evolved over time.
+
+It is easy to see how this works. 
+
+1. Start the project, wait until all Aspire services are running.
+2. Open the Scalar OpenApi dashboard by clicking the link in the Aspire dashboard.
+3. Execute the 'GET /plan/all' and copy the id of a plan.
+4. Execute the 'GET /plan/activity/{id}' request with the copied id.
 
 
 

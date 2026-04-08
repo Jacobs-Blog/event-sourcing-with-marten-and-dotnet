@@ -1,4 +1,5 @@
 using BIMEvents.Domain;
+using Marten;
 using Marten.Events.Aggregation;
 
 namespace BIMEvents.Application;
@@ -22,6 +23,7 @@ public class PlanProjection : SingleStreamProjection<Plan, Guid>
     
     public void Apply(RoofSpecificationChanged @event, Plan plan)
     {
+        Thread.Sleep(5000); // simulate slow processing, demonstrating eventual consistency
         plan.RoofSpecification = @event.RoofSpecification;
         plan.UpdatedAt = DateTimeOffset.UtcNow;
         Console.ForegroundColor = ConsoleColor.Yellow;

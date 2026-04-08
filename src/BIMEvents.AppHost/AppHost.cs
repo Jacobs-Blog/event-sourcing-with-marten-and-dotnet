@@ -9,7 +9,8 @@ var keycloak = builder
     .WithRealmImport("../../keycloak/bimevents-realm.json")
     .WithOtlpExporter();
 
-var postgresdb = builder.AddPostgres("marten")
+var postgresdb = builder
+    .AddPostgres("marten")
     .WithPgAdmin();
 
 var api = builder
